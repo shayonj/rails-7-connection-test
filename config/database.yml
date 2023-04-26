@@ -1,0 +1,16 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  connection_retries: 3
+  retry_deadline: 5
+
+development:
+  <<: *default
+  database: railsondocker_development
+test:
+  <<: *default
+  database: railsondocker_test
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
